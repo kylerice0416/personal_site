@@ -6,6 +6,7 @@ const sitemapLinks = [
   { name: "Portfolio", href: "#portfolio" },
   { name: "Case Studies", href: "#case-studies" },
   { name: "About", href: "#about" },
+  { name: "Blog", href: "/blog" },
 ]
 
 type Props = { settings: SiteSettings }

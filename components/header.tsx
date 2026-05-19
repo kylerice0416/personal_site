@@ -2,6 +2,7 @@
 
 import { useState } from "react"
 import Link from "next/link"
+import { usePathname } from "next/navigation"
 import type { SiteSettings } from "@/sanity/lib/queries"
 
 const navItems = [
@@ -11,25 +12,32 @@ const navItems = [
   { name: "Case Studies", href: "#case-studies" },
   { name: "About", href: "#about" },
   { name: "Contact", href: "#contact" },
+  { name: "Blog", href: "/blog" },
 ]
 
 type Props = { settings: SiteSettings }
 
 export function Header({ settings }: Props) {
+  const pathname = usePathname()
   const [activeItem, setActiveItem] = useState("Home")
+
+  const isActive = (item: { name: string; href: string }) => {
+    if (item.href.startsWith('/')) return pathname.startsWith(item.href)
+    return activeItem === item.name
+  }
 
   return (
     <header className="sticky top-0 z-50 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
       <div className="max-w-7xl mx-auto px-6 py-4">
         <div className="flex items-center justify-between">
-          <div>
+          <Link href="/">
             <h1 className="text-xl font-bold tracking-tight">
               {settings?.name ?? 'Ai Chien'}
             </h1>
             <p className="text-xs tracking-[0.2em] text-muted-foreground uppercase">
               {settings?.subtitle ?? 'Translation & Localization'}
             </p>
-          </div>
+          </Link>
 
           <nav className="hidden md:flex items-center gap-1">
             {navItems.map((item) => (
@@ -38,7 +46,7 @@ export function Header({ settings }: Props) {
                 href={item.href}
                 onClick={() => setActiveItem(item.name)}
                 className={`px-4 py-2 rounded-full text-sm font-medium transition-colors ${
-                  activeItem === item.name
+                  isActive(item)
                     ? "bg-primary text-primary-foreground"
                     : "hover:bg-muted"
                 }`}

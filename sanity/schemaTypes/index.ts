@@ -7,6 +7,7 @@ import { caseStudy } from './caseStudy'
 import { siteSettings } from './siteSettings'
 import { featuredWork } from './featuredWork'
 import { cta } from './cta'
+import { blogPost } from './blogPost'
 
 export const schemaTypes = [
   hero,
@@ -18,4 +19,5 @@ export const schemaTypes = [
   siteSettings,
   featuredWork,
   cta,
+  blogPost,
 ]

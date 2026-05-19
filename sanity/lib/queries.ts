@@ -160,3 +160,37 @@ export type CtaData = {
   buttonLabel?: string | null
   buttonHref?: string | null
 } | null
+
+export const blogPostsQuery = defineQuery(`*[_type == "blogPost"] | order(publishedAt desc){
+  _id,
+  title,
+  "slug": slug.current,
+  publishedAt,
+  coverImage{ asset, hotspot, crop, alt },
+  excerpt
+}`)
+
+export const blogPostSlugsQuery = defineQuery(`*[_type == "blogPost"]{ "slug": slug.current }`)
+
+export const blogPostQuery = defineQuery(`*[_type == "blogPost" && slug.current == $slug][0]{
+  _id,
+  title,
+  "slug": slug.current,
+  publishedAt,
+  coverImage{ asset, hotspot, crop, alt },
+  excerpt,
+  body
+}`)
+
+export type BlogPostPreview = {
+  _id: string
+  title?: string | null
+  slug?: string | null
+  publishedAt?: string | null
+  coverImage?: { asset?: any; hotspot?: any; crop?: any; alt?: string | null } | null
+  excerpt?: string | null
+}
+
+export type BlogPostFull = BlogPostPreview & {
+  body?: any[] | null
+}
