@@ -44,6 +44,7 @@ export default defineConfig({
       previewUrl: {
         draftMode: {
           enable: '/api/draft-mode/enable',
+          secret: process.env.NEXT_PUBLIC_SANITY_PREVIEW_SECRET,
         },
       },
     }),
