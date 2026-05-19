@@ -2,6 +2,7 @@
 
 import { useState } from "react"
 import Link from "next/link"
+import type { SiteSettings } from "@/sanity/lib/queries"
 
 const navItems = [
   { name: "Home", href: "#home" },
@@ -12,7 +13,9 @@ const navItems = [
   { name: "Contact", href: "#contact" },
 ]
 
-export function Header() {
+type Props = { settings: SiteSettings }
+
+export function Header({ settings }: Props) {
   const [activeItem, setActiveItem] = useState("Home")
 
   return (
@@ -20,12 +23,14 @@ export function Header() {
       <div className="max-w-7xl mx-auto px-6 py-4">
         <div className="flex items-center justify-between">
           <div>
-            <h1 className="text-xl font-bold tracking-tight">Ai Chien</h1>
+            <h1 className="text-xl font-bold tracking-tight">
+              {settings?.name ?? 'Ai Chien'}
+            </h1>
             <p className="text-xs tracking-[0.2em] text-muted-foreground uppercase">
-              Translation & Localization
+              {settings?.subtitle ?? 'Translation & Localization'}
             </p>
           </div>
-          
+
           <nav className="hidden md:flex items-center gap-1">
             {navItems.map((item) => (
               <Link

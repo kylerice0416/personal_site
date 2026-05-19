@@ -1,8 +1,9 @@
 "use client"
 
 import { useState } from "react"
+import type { SiteSettings } from "@/sanity/lib/queries"
 
-const projectTypes = [
+const defaultProjectTypes = [
   "Cultural / museum translation",
   "Game localization",
   "Marketing localization",
@@ -11,7 +12,14 @@ const projectTypes = [
   "Other",
 ]
 
-export function Contact() {
+type Props = { settings: SiteSettings }
+
+export function Contact({ settings }: Props) {
+  const projectTypes =
+    settings?.contactProjectTypes && settings.contactProjectTypes.length > 0
+      ? settings.contactProjectTypes
+      : defaultProjectTypes
+
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -30,39 +38,39 @@ export function Contact() {
       <p className="text-xs tracking-[0.2em] text-muted-foreground uppercase mb-6">
         Contact
       </p>
-      
+
       <h2 className="text-4xl md:text-6xl font-bold tracking-tight leading-[1.1] max-w-3xl mb-6">
         Tell me about the source.
       </h2>
-      
+
       <p className="text-lg text-muted-foreground max-w-xl mb-12">
         A few sentences about the project, deadline, and audience is plenty to start. I respond within two working days.
       </p>
-      
+
       <div className="grid md:grid-cols-2 gap-16">
         <div className="space-y-8">
           <div>
             <p className="text-xs tracking-[0.15em] text-muted-foreground uppercase mb-2">Email</p>
-            <p className="font-medium">hello@aichien.studio</p>
+            <p className="font-medium">{settings?.email ?? 'hello@aichien.studio'}</p>
           </div>
-          
+
           <div>
             <p className="text-xs tracking-[0.15em] text-muted-foreground uppercase mb-2">Based in</p>
-            <p className="font-medium">Taipei, Taiwan</p>
-            <p className="text-muted-foreground text-sm">Working with clients worldwide</p>
+            <p className="font-medium">{settings?.location ?? 'Taipei, Taiwan'}</p>
+            <p className="text-muted-foreground text-sm">{settings?.locationSubtext ?? 'Working with clients worldwide'}</p>
           </div>
-          
+
           <div>
             <p className="text-xs tracking-[0.15em] text-muted-foreground uppercase mb-2">Languages</p>
-            <p className="font-medium">English · 繁體中文 · 简体中文</p>
+            <p className="font-medium">{settings?.languages ?? 'English · 繁體中文 · 简体中文'}</p>
           </div>
-          
+
           <div>
             <p className="text-xs tracking-[0.15em] text-muted-foreground uppercase mb-2">Response Time</p>
-            <p className="font-medium">Within 2 working days</p>
+            <p className="font-medium">{settings?.responseTime ?? 'Within 2 working days'}</p>
           </div>
         </div>
-        
+
         <form onSubmit={handleSubmit} className="border border-border rounded-lg p-8 bg-card">
           <div className="grid md:grid-cols-2 gap-6 mb-6">
             <div>
@@ -90,7 +98,7 @@ export function Contact() {
               />
             </div>
           </div>
-          
+
           <div className="mb-6">
             <label className="text-xs tracking-[0.15em] text-muted-foreground uppercase block mb-3">
               Company / Studio (optional)
@@ -102,7 +110,7 @@ export function Contact() {
               className="w-full border-b border-border bg-transparent py-2 focus:outline-none focus:border-foreground transition-colors"
             />
           </div>
-          
+
           <div className="mb-6">
             <label className="text-xs tracking-[0.15em] text-muted-foreground uppercase block mb-3">
               Project Type
@@ -117,7 +125,7 @@ export function Contact() {
               ))}
             </select>
           </div>
-          
+
           <div className="mb-8">
             <label className="text-xs tracking-[0.15em] text-muted-foreground uppercase block mb-3">
               About the Project
@@ -130,7 +138,7 @@ export function Contact() {
               className="w-full border-b border-border bg-transparent py-2 focus:outline-none focus:border-foreground transition-colors resize-none"
             />
           </div>
-          
+
           <button
             type="submit"
             className="inline-flex items-center px-6 py-3 bg-primary text-primary-foreground rounded-full font-medium hover:bg-primary/90 transition-colors"

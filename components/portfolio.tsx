@@ -1,69 +1,33 @@
 "use client"
 
-import { useState } from "react"
+import { useState, useMemo } from "react"
+import type { PortfolioProjectItem } from "@/sanity/lib/queries"
 
-const categories = ["All", "Cultural", "Game", "Marketing", "Editorial"]
+type Props = { projects: PortfolioProjectItem[] }
 
-const projects = [
-  {
-    year: "2024",
-    sector: "Cultural",
-    title: "Museum Exhibition Translation",
-    client: "National Museum, Taipei",
-    details: "Translation and editorial adaptation for bilingual exhibition materials focused on historical accessibility and tone preservation.",
-    caseStudy: true,
-  },
-  {
-    year: "2024",
-    sector: "Game",
-    title: "RPG Game Localization",
-    client: "Indie studio (NDA)",
-    details: "Localized UI, store assets, dialogue, and patch notes for Traditional Chinese-speaking audiences.",
-    caseStudy: true,
-  },
-  {
-    year: "2023",
-    sector: "Marketing",
-    title: "Luxury Brand Campaign Adaptation",
-    client: "European fashion house",
-    details: "Transcreated campaign copy while preserving premium brand tone and regional market nuance.",
-    caseStudy: true,
-  },
-  {
-    year: "2023",
-    sector: "Editorial",
-    title: "Literary Essay Collection",
-    client: "",
-    details: "Translated a contemporary Taiwanese essay collection for an English-language literary publisher.",
-    caseStudy: false,
-  },
-  {
-    year: "2023",
-    sector: "Game",
-    title: "Mobile Puzzle Game UI",
-    client: "",
-    details: "End-to-end UI and store-listing localization for a mobile puzzle game launching in APAC.",
-    caseStudy: false,
-  },
-]
-
-export function Portfolio() {
+export function Portfolio({ projects }: Props) {
   const [activeCategory, setActiveCategory] = useState("All")
 
-  const filteredProjects = activeCategory === "All" 
-    ? projects 
-    : projects.filter(p => p.sector === activeCategory)
+  const categories = useMemo(() => {
+    const sectors = projects.map((p) => p.sector).filter(Boolean) as string[]
+    return ["All", ...Array.from(new Set(sectors))]
+  }, [projects])
+
+  const filteredProjects =
+    activeCategory === "All"
+      ? projects
+      : projects.filter((p) => p.sector === activeCategory)
 
   return (
     <section id="portfolio" className="max-w-7xl mx-auto px-6 py-20">
       <p className="text-xs tracking-[0.2em] text-muted-foreground uppercase mb-6">
         Portfolio
       </p>
-      
+
       <h2 className="text-4xl md:text-6xl font-bold tracking-tight leading-[1.1] max-w-4xl mb-10">
         Selected projects across cultures and contexts.
       </h2>
-      
+
       <div className="flex flex-wrap gap-2 mb-10">
         {categories.map((category) => (
           <button
@@ -79,7 +43,7 @@ export function Portfolio() {
           </button>
         ))}
       </div>
-      
+
       <div className="border-t border-border">
         <div className="hidden md:grid grid-cols-12 gap-4 py-4 text-xs tracking-[0.15em] text-muted-foreground uppercase border-b border-border">
           <div className="col-span-1">Year</div>
@@ -88,9 +52,9 @@ export function Portfolio() {
           <div className="col-span-5">Details</div>
           <div className="col-span-1">Link</div>
         </div>
-        
-        {filteredProjects.map((project, index) => (
-          <div key={index} className="grid md:grid-cols-12 gap-4 py-6 border-b border-border items-start">
+
+        {filteredProjects.map((project) => (
+          <div key={project._id} className="grid md:grid-cols-12 gap-4 py-6 border-b border-border items-start">
             <div className="md:col-span-1 text-muted-foreground text-sm">{project.year}</div>
             <div className="md:col-span-2 text-sm">{project.sector}</div>
             <div className="md:col-span-3">
