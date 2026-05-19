@@ -11,7 +11,7 @@ export function CTA({ data }: Props) {
           {data?.heading ?? 'Have a project in mind?'}
         </h2>
         <Link
-          href={data?.buttonHref ?? '#contact'}
+          href={data?.buttonHref ?? '/contact'}
           className="inline-flex items-center px-6 py-3 bg-primary-foreground text-primary rounded-full font-medium hover:bg-primary-foreground/90 transition-colors whitespace-nowrap"
         >
           {data?.buttonLabel ?? 'Start a conversation →'}

@@ -38,5 +38,6 @@ export const siteSettings = defineType({
       of: [{ type: 'string' }],
       description: 'Options shown in the contact form project type dropdown',
     }),
+    defineField({ name: 'resumeFile', title: 'Resume (PDF)', type: 'file', options: { accept: '.pdf' } }),
   ],
 })

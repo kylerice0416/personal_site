@@ -2,10 +2,10 @@ import Link from "next/link"
 import type { SiteSettings } from "@/sanity/lib/queries"
 
 const sitemapLinks = [
-  { name: "Services", href: "#services" },
-  { name: "Portfolio", href: "#portfolio" },
-  { name: "Case Studies", href: "#case-studies" },
-  { name: "About", href: "#about" },
+  { name: "Services", href: "/services" },
+  { name: "Portfolio", href: "/portfolio" },
+  { name: "Case Studies", href: "/case-studies" },
+  { name: "About", href: "/about" },
   { name: "Blog", href: "/blog" },
 ]
 

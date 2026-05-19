@@ -39,7 +39,7 @@ export function FAQ({ items }: Props) {
 
       <div className="mt-16">
         <a
-          href="#contact"
+          href="/contact"
           className="inline-flex items-center px-6 py-3 bg-primary text-primary-foreground rounded-full font-medium hover:bg-primary/90 transition-colors"
         >
           Start a conversation →

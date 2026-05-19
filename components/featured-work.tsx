@@ -32,7 +32,7 @@ export function FeaturedWork({ data }: Props) {
             {data?.sectionHeading ?? 'Selected translation and localization projects.'}
           </h2>
         </div>
-        <a href="#portfolio" className="hidden md:inline-flex items-center text-sm hover:underline">
+        <a href="/portfolio" className="hidden md:inline-flex items-center text-sm hover:underline">
           Full Portfolio ↗
         </a>
       </div>
@@ -46,7 +46,7 @@ export function FeaturedWork({ data }: Props) {
             <h3 className="text-2xl font-bold mb-3">{project.title}</h3>
             <p className="text-muted-foreground mb-4 max-w-2xl">{project.description}</p>
             {project.hasCaseStudy && (
-              <a href="#case-studies" className="text-sm hover:underline">
+              <a href="/case-studies" className="text-sm hover:underline">
                 View Case Study →
               </a>
             )}

@@ -45,6 +45,25 @@ export function About({ settings }: Props) {
             </div>
           </div>
         </div>
+
+        {settings?.resumeFile?.asset?.url && (
+          <div className="grid md:grid-cols-12 gap-8 py-12 border-t border-border">
+            <div className="md:col-span-3">
+              <p className="text-xs tracking-[0.15em] text-muted-foreground uppercase">Resume</p>
+            </div>
+            <div className="md:col-span-9">
+              <a
+                href={settings.resumeFile.asset.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                download
+                className="inline-flex items-center px-6 py-3 border border-border rounded-full font-medium hover:bg-muted transition-colors"
+              >
+                Download Resume (PDF) ↓
+              </a>
+            </div>
+          </div>
+        )}
       </div>
     </section>
   )

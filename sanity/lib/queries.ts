@@ -65,7 +65,8 @@ export const siteSettingsQuery = defineQuery(`*[_type == "siteSettings"][0]{
   footerDescription,
   aboutPhilosophy,
   background[]{ period, title, description },
-  contactProjectTypes
+  contactProjectTypes,
+  resumeFile{ asset->{ url } }
 }`)
 
 export const featuredWorkQuery = defineQuery(`*[_type == "featuredWork"][0]{
@@ -147,6 +148,7 @@ export type SiteSettings = {
   aboutPhilosophy?: string | null
   background?: Array<{ period?: string; title?: string; description?: string }> | null
   contactProjectTypes?: string[] | null
+  resumeFile?: { asset?: { url?: string | null } | null } | null
 } | null
 
 export type FeaturedWorkData = {

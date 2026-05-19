@@ -1,17 +1,16 @@
 "use client"
 
-import { useState } from "react"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
 import type { SiteSettings } from "@/sanity/lib/queries"
 
 const navItems = [
-  { name: "Home", href: "#home" },
-  { name: "Services", href: "#services" },
-  { name: "Portfolio", href: "#portfolio" },
-  { name: "Case Studies", href: "#case-studies" },
-  { name: "About", href: "#about" },
-  { name: "Contact", href: "#contact" },
+  { name: "Home", href: "/" },
+  { name: "Services", href: "/services" },
+  { name: "Portfolio", href: "/portfolio" },
+  { name: "Case Studies", href: "/case-studies" },
+  { name: "About", href: "/about" },
+  { name: "Contact", href: "/contact" },
   { name: "Blog", href: "/blog" },
 ]
 
@@ -19,11 +18,10 @@ type Props = { settings: SiteSettings }
 
 export function Header({ settings }: Props) {
   const pathname = usePathname()
-  const [activeItem, setActiveItem] = useState("Home")
 
-  const isActive = (item: { name: string; href: string }) => {
-    if (item.href.startsWith('/')) return pathname.startsWith(item.href)
-    return activeItem === item.name
+  const isActive = (href: string) => {
+    if (href === '/') return pathname === '/'
+    return pathname.startsWith(href)
   }
 
   return (
@@ -44,9 +42,8 @@ export function Header({ settings }: Props) {
               <Link
                 key={item.name}
                 href={item.href}
-                onClick={() => setActiveItem(item.name)}
                 className={`px-4 py-2 rounded-full text-sm font-medium transition-colors ${
-                  isActive(item)
+                  isActive(item.href)
                     ? "bg-primary text-primary-foreground"
                     : "hover:bg-muted"
                 }`}

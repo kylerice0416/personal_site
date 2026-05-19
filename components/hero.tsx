@@ -22,13 +22,13 @@ export function Hero({ data }: Props) {
 
       <div className="flex flex-wrap gap-4 mb-20">
         <Link
-          href={data?.primaryCtaHref ?? '#portfolio'}
+          href={data?.primaryCtaHref ?? '/portfolio'}
           className="inline-flex items-center px-6 py-3 bg-primary text-primary-foreground rounded-full font-medium hover:bg-primary/90 transition-colors"
         >
           {data?.primaryCtaLabel ?? 'View Selected Work →'}
         </Link>
         <Link
-          href={data?.secondaryCtaHref ?? '#contact'}
+          href={data?.secondaryCtaHref ?? '/contact'}
           className="inline-flex items-center px-6 py-3 border border-border rounded-full font-medium hover:bg-muted transition-colors"
         >
           {data?.secondaryCtaLabel ?? 'Contact'}
