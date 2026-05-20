@@ -105,19 +105,14 @@
   body {
     @apply bg-background text-foreground;
   }
-  h1, h2, h3, h4, h5, h6 {
-    font-family: var(--font-display);
-  }
-  a.rounded-full, button.rounded-full {
-    font-family: var(--font-display);
-  }
-  /* Subheadings — larger intro/descriptor paragraphs */
-  p.text-lg, p.text-xl {
-    font-family: var(--font-display);
-  }
-  .font-display {
-    font-family: var(--font-display);
-  }
+}
+
+/* Unlayered — beats all Tailwind layers */
+h1, h2, h3, h4, h5, h6,
+a.rounded-full, button.rounded-full,
+p.text-lg, p.text-xl,
+.font-display {
+  font-family: var(--font-display);
 }
 
 html {
