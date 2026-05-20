@@ -3,9 +3,10 @@
 import { useState } from "react"
 import type { FaqItem } from "@/sanity/lib/queries"
 
-type Props = { items: FaqItem[] }
+type Props = { items: FaqItem[]; limit?: number }
 
-export function FAQ({ items }: Props) {
+export function FAQ({ items, limit }: Props) {
+  items = limit ? items.slice(0, limit) : items
   const [openIndex, setOpenIndex] = useState<number | null>(null)
 
   return (
@@ -29,7 +30,11 @@ export function FAQ({ items }: Props) {
               </button>
               {openIndex === index && (
                 <div className="pb-6 pr-12">
-                  <p className="text-muted-foreground leading-relaxed">{faq.answer}</p>
+                  <p className="text-muted-foreground leading-relaxed">
+                  {faq.answer?.split('\\n').map((line, i, arr) => (
+                    <span key={i}>{line}{i < arr.length - 1 && <br />}</span>
+                  ))}
+                </p>
                 </div>
               )}
             </div>

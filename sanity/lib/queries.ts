@@ -13,12 +13,17 @@ export const heroQuery = defineQuery(`*[_type == "hero"][0]{
   focusAreas[]{ title, description }
 }`)
 
+export const servicesPageQuery = defineQuery(`*[_type == "servicesPage"][0]{
+  eyebrow,
+  headline,
+  subheading
+}`)
+
 export const servicesQuery = defineQuery(`*[_type == "service"] | order(order asc){
   _id,
   number,
   title,
-  description,
-  deliverables
+  description
 }`)
 
 export const portfolioProjectsQuery = defineQuery(`*[_type == "portfolioProject"] | order(order asc){
@@ -97,12 +102,17 @@ export type HeroData = {
   focusAreas?: Array<{ title?: string; description?: string }> | null
 } | null
 
+export type ServicesPageData = {
+  eyebrow?: string | null
+  headline?: string | null
+  subheading?: string | null
+} | null
+
 export type ServiceItem = {
   _id: string
   number?: string | null
   title?: string | null
   description?: string | null
-  deliverables?: string[] | null
 }
 
 export type PortfolioProjectItem = {

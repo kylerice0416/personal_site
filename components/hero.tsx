@@ -11,7 +11,7 @@ export function Hero({ data }: Props) {
 
   return (
     <section id="home" className="max-w-7xl mx-auto px-6 pt-20 md:pt-32">
-      <div className="relative pb-20 md:pb-32">
+      <div className="relative isolate pb-20 md:pb-32">
         {heroImage && (
           <div className="absolute inset-0 -z-10 overflow-hidden rounded-lg">
             <Image

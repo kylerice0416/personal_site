@@ -1,14 +1,20 @@
 import type { Metadata } from 'next'
-import { Inter } from 'next/font/google'
+import { Lato, Playfair_Display } from 'next/font/google'
 import { Analytics } from '@vercel/analytics/next'
 import { VisualEditing } from 'next-sanity/visual-editing'
 import { draftMode } from 'next/headers'
 import { SanityLive } from '@/sanity/lib/live'
 import './globals.css'
 
-const inter = Inter({ 
-  subsets: ["latin"],
-  variable: '--font-inter',
+const lato = Lato({
+  subsets: ['latin'],
+  weight: ['400', '700'],
+  variable: '--font-lato',
+})
+
+const playfair = Playfair_Display({
+  subsets: ['latin'],
+  variable: '--font-playfair',
 })
 
 export const metadata: Metadata = {
@@ -25,7 +31,7 @@ export default async function RootLayout({
 
   return (
     <html lang="en" className="bg-background">
-      <body className={`${inter.variable} font-sans antialiased`}>
+      <body className={`${lato.variable} ${playfair.variable} font-sans antialiased`}>
         {children}
         <SanityLive />
         {isDraftMode && <VisualEditing />}
