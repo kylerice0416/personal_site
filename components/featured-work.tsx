@@ -45,11 +45,6 @@ export function FeaturedWork({ data }: Props) {
             </p>
             <h3 className="text-2xl font-bold mb-3">{project.title}</h3>
             <p className="text-muted-foreground mb-4 max-w-2xl">{project.description}</p>
-            {project.hasCaseStudy && (
-              <a href="/case-studies" className="text-sm hover:underline">
-                View Case Study →
-              </a>
-            )}
           </div>
         ))}
       </div>
