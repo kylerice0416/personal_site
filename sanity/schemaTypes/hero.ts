@@ -12,6 +12,13 @@ export const hero = defineType({
     defineField({ name: 'primaryCtaHref', title: 'Primary CTA Href', type: 'string' }),
     defineField({ name: 'secondaryCtaLabel', title: 'Secondary CTA Label', type: 'string' }),
     defineField({ name: 'secondaryCtaHref', title: 'Secondary CTA Href', type: 'string' }),
+    defineField({
+      name: 'heroImage',
+      title: 'Hero Background Image',
+      type: 'image',
+      options: { hotspot: true },
+      fields: [defineField({ name: 'alt', title: 'Alt Text', type: 'string' })],
+    }),
     defineField({ name: 'focusAreasEyebrow', title: 'Focus Areas Eyebrow', type: 'string' }),
     defineField({
       name: 'focusAreas',

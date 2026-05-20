@@ -5,6 +5,7 @@ export const featuredWork = defineType({
   title: 'Featured Work',
   type: 'document',
   fields: [
+    defineField({ name: 'metricsLabel', title: 'Metrics Section Label', type: 'string', description: 'e.g. "Selected Metrics"' }),
     defineField({
       name: 'metrics',
       title: 'Metrics',

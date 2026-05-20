@@ -10,7 +10,7 @@ export function FeaturedWork({ data }: Props) {
     <section className="max-w-7xl mx-auto px-6 py-20">
       <div className="border border-border rounded-lg p-8 md:p-12 mb-16">
         <p className="text-xs tracking-[0.2em] text-muted-foreground uppercase mb-8">
-          Selected Metrics
+          {data?.metricsLabel ?? 'Selected Metrics'}
         </p>
 
         <div className="grid md:grid-cols-3 gap-8">

@@ -1,4 +1,5 @@
 import { hero } from './hero'
+import { translationShowcase } from './translationShowcase'
 import { service } from './service'
 import { portfolioProject } from './portfolioProject'
 import { testimonial } from './testimonial'
@@ -11,6 +12,7 @@ import { blogPost } from './blogPost'
 
 export const schemaTypes = [
   hero,
+  translationShowcase,
   service,
   portfolioProject,
   testimonial,

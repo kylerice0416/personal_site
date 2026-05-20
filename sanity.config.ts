@@ -4,7 +4,7 @@ import { presentationTool } from 'sanity/presentation'
 import { visionTool } from '@sanity/vision'
 import { schemaTypes } from './sanity/schemaTypes'
 
-const singletonTypes = new Set(['hero', 'siteSettings', 'featuredWork', 'cta'])
+const singletonTypes = new Set(['hero', 'siteSettings', 'featuredWork', 'cta', 'translationShowcase'])
 
 export default defineConfig({
   name: 'default',
@@ -34,6 +34,10 @@ export default defineConfig({
               .title('CTA')
               .id('cta')
               .child(S.document().schemaType('cta').documentId('cta')),
+            S.listItem()
+              .title('Translation Showcase')
+              .id('translationShowcase')
+              .child(S.document().schemaType('translationShowcase').documentId('translationShowcase')),
             S.divider(),
             ...S.documentTypeListItems().filter(
               (listItem) => !singletonTypes.has(listItem.getId()!)

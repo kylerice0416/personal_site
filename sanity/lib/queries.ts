@@ -8,6 +8,7 @@ export const heroQuery = defineQuery(`*[_type == "hero"][0]{
   primaryCtaHref,
   secondaryCtaLabel,
   secondaryCtaHref,
+  heroImage{ asset, hotspot, crop, alt },
   focusAreasEyebrow,
   focusAreas[]{ title, description }
 }`)
@@ -70,6 +71,7 @@ export const siteSettingsQuery = defineQuery(`*[_type == "siteSettings"][0]{
 }`)
 
 export const featuredWorkQuery = defineQuery(`*[_type == "featuredWork"][0]{
+  metricsLabel,
   metrics[]{ value, label },
   sectionHeading,
   featuredProjects[]{ category, title, description, hasCaseStudy }
@@ -90,6 +92,7 @@ export type HeroData = {
   primaryCtaHref?: string | null
   secondaryCtaLabel?: string | null
   secondaryCtaHref?: string | null
+  heroImage?: { asset?: any; hotspot?: any; crop?: any; alt?: string | null } | null
   focusAreasEyebrow?: string | null
   focusAreas?: Array<{ title?: string; description?: string }> | null
 } | null
@@ -152,6 +155,7 @@ export type SiteSettings = {
 } | null
 
 export type FeaturedWorkData = {
+  metricsLabel?: string | null
   metrics?: Array<{ value?: string; label?: string }> | null
   sectionHeading?: string | null
   featuredProjects?: Array<{ category?: string; title?: string; description?: string; hasCaseStudy?: boolean }> | null
@@ -161,6 +165,22 @@ export type CtaData = {
   heading?: string | null
   buttonLabel?: string | null
   buttonHref?: string | null
+} | null
+
+export const translationShowcaseQuery = defineQuery(`*[_type == "translationShowcase"][0]{
+  eyebrow,
+  chineseText,
+  chineseLabel,
+  englishText,
+  englishLabel
+}`)
+
+export type TranslationShowcaseData = {
+  eyebrow?: string | null
+  chineseText?: string | null
+  chineseLabel?: string | null
+  englishText?: string | null
+  englishLabel?: string | null
 } | null
 
 export const blogPostsQuery = defineQuery(`*[_type == "blogPost"] | order(publishedAt desc){

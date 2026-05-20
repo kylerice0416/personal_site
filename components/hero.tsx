@@ -1,41 +1,59 @@
 import Link from "next/link"
+import Image from "next/image"
 import type { HeroData } from "@/sanity/lib/queries"
+import { urlFor } from "@/sanity/lib/image"
 
 type Props = { data: HeroData }
 
 export function Hero({ data }: Props) {
   const focusAreas = data?.focusAreas ?? []
+  const heroImage = data?.heroImage?.asset ? urlFor(data.heroImage).url() : null
 
   return (
-    <section id="home" className="max-w-7xl mx-auto px-6 py-20 md:py-32">
-      <p className="text-xs tracking-[0.2em] text-muted-foreground uppercase mb-6">
-        {data?.eyebrow ?? 'Chinese ↔ English Translation'}
-      </p>
+    <section id="home" className="max-w-7xl mx-auto px-6 pt-20 md:pt-32">
+      <div className="relative pb-20 md:pb-32">
+        {heroImage && (
+          <div className="absolute inset-0 -z-10 overflow-hidden rounded-lg">
+            <Image
+              src={heroImage}
+              alt={data?.heroImage?.alt ?? ''}
+              fill
+              className="object-cover"
+              priority
+            />
+            <div className="absolute inset-0 bg-background/60" />
+          </div>
+        )}
 
-      <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold tracking-tight leading-[1.1] max-w-4xl mb-8">
-        {data?.headline ?? 'Translation that preserves tone, culture, and intent.'}
-      </h1>
+        <p className="text-xs tracking-[0.2em] text-muted-foreground uppercase mb-6">
+          {data?.eyebrow ?? 'Chinese ↔ English Translation'}
+        </p>
 
-      <p className="text-lg text-muted-foreground max-w-xl mb-10">
-        {data?.subtext ?? 'Specializing in museum translation, game localization, and editorial adaptation for international audiences.'}
-      </p>
+        <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight leading-[1.1] max-w-4xl mb-8">
+          {data?.headline ?? 'Translation that preserves tone, culture, and intent.'}
+        </h1>
 
-      <div className="flex flex-wrap gap-4 mb-20">
-        <Link
-          href={data?.primaryCtaHref ?? '/portfolio'}
-          className="inline-flex items-center px-6 py-3 bg-primary text-primary-foreground rounded-full font-medium hover:bg-primary/90 transition-colors"
-        >
-          {data?.primaryCtaLabel ?? 'View Selected Work →'}
-        </Link>
-        <Link
-          href={data?.secondaryCtaHref ?? '/contact'}
-          className="inline-flex items-center px-6 py-3 border border-border rounded-full font-medium hover:bg-muted transition-colors"
-        >
-          {data?.secondaryCtaLabel ?? 'Contact'}
-        </Link>
+        <p className="text-lg text-muted-foreground max-w-xl mb-10">
+          {data?.subtext ?? 'Specializing in museum translation, game localization, and editorial adaptation for international audiences.'}
+        </p>
+
+        <div className="flex flex-wrap gap-4">
+          <Link
+            href={data?.primaryCtaHref ?? '/portfolio'}
+            className="inline-flex items-center px-6 py-3 bg-primary text-primary-foreground rounded-full font-medium hover:bg-primary/90 transition-colors"
+          >
+            {data?.primaryCtaLabel ?? 'View Selected Work →'}
+          </Link>
+          <Link
+            href={data?.secondaryCtaHref ?? '/contact'}
+            className="inline-flex items-center px-6 py-3 border border-border rounded-full font-medium hover:bg-muted transition-colors"
+          >
+            {data?.secondaryCtaLabel ?? 'Contact'}
+          </Link>
+        </div>
       </div>
 
-      <div className="border-t border-border pt-12">
+      <div className="border-t border-border pt-12 pb-20 md:pb-32">
         <p className="text-xs tracking-[0.2em] text-muted-foreground uppercase mb-8">
           {data?.focusAreasEyebrow ?? 'Focus Areas'}
         </p>
