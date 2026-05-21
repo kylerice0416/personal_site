@@ -9,6 +9,8 @@ export const heroQuery = defineQuery(`*[_type == "hero"][0]{
   secondaryCtaLabel,
   secondaryCtaHref,
   heroImage{ asset, hotspot, crop, alt },
+  animatedPhraseZh,
+  animatedPhraseEn,
   focusAreasEyebrow,
   focusAreas[]{ title, description }
 }`)
@@ -98,6 +100,8 @@ export type HeroData = {
   secondaryCtaLabel?: string | null
   secondaryCtaHref?: string | null
   heroImage?: { asset?: any; hotspot?: any; crop?: any; alt?: string | null } | null
+  animatedPhraseZh?: string | null
+  animatedPhraseEn?: string | null
   focusAreasEyebrow?: string | null
   focusAreas?: Array<{ title?: string; description?: string }> | null
 } | null

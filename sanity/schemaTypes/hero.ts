@@ -19,6 +19,8 @@ export const hero = defineType({
       options: { hotspot: true },
       fields: [defineField({ name: 'alt', title: 'Alt Text', type: 'string' })],
     }),
+    defineField({ name: 'animatedPhraseZh', title: 'Animated Phrase — Chinese', type: 'string', description: 'e.g. "世界"' }),
+    defineField({ name: 'animatedPhraseEn', title: 'Animated Phrase — English', type: 'string', description: 'e.g. "the world."' }),
     defineField({ name: 'focusAreasEyebrow', title: 'Focus Areas Eyebrow', type: 'string' }),
     defineField({
       name: 'focusAreas',

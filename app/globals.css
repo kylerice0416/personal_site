@@ -4,8 +4,8 @@
 @custom-variant dark (&:is(.dark *));
 
 :root {
-  /* #caf0f8 — light cyan */
-  --background: oklch(0.944 0.040 200);
+  /* #edfafd — near-white cyan */
+  --background: oklch(0.978 0.012 200);
   /* #03045e — deep twilight */
   --foreground: oklch(0.110 0.190 265);
 
@@ -119,6 +119,15 @@ p.text-lg, p.text-xl,
 
 html {
   scroll-behavior: smooth;
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+.typewriter-cursor {
+  animation: blink 0.7s step-end infinite;
+  margin-left: 1px;
 }
 
 /* Cyan border glow on hover for outlined/pill buttons */

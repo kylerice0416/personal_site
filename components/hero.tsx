@@ -2,6 +2,7 @@ import Link from "next/link"
 import Image from "next/image"
 import type { HeroData } from "@/sanity/lib/queries"
 import { urlFor } from "@/sanity/lib/image"
+import { TypewriterWord } from "@/components/typewriter-word"
 
 type Props = { data: HeroData }
 
@@ -13,15 +14,14 @@ export function Hero({ data }: Props) {
     <section id="home" className="max-w-7xl mx-auto px-6 pt-20 md:pt-32">
       <div className="relative isolate pb-20 md:pb-32">
         {heroImage && (
-          <div className="absolute inset-0 -z-10 overflow-hidden rounded-lg">
+          <div className="absolute inset-y-0 right-0 w-[55%] -z-10">
             <Image
               src={heroImage}
               alt={data?.heroImage?.alt ?? ''}
               fill
-              className="object-cover"
+              className="object-contain object-right-bottom"
               priority
             />
-            <div className="absolute inset-0 bg-background/60" />
           </div>
         )}
 
@@ -30,7 +30,11 @@ export function Hero({ data }: Props) {
         </p>
 
         <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight leading-[1.1] max-w-4xl mb-8">
-          {data?.headline ?? 'Translation that preserves tone, culture, and intent.'}
+          {data?.headline ?? 'Translation that preserves tone, culture, and intent —'}{' '}
+          <TypewriterWord
+            zh={data?.animatedPhraseZh ?? '世界'}
+            en={data?.animatedPhraseEn ?? 'the world.'}
+          />
         </h1>
 
         <p className="text-lg text-muted-foreground max-w-xl mb-10">
