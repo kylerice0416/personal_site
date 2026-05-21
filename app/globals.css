@@ -4,56 +4,58 @@
 @custom-variant dark (&:is(.dark *));
 
 :root {
-  /* #f4f4f9 — near-white with faint blue */
-  --background: oklch(0.963 0.006 271);
-  /* #000000 — pure black */
-  --foreground: oklch(0 0 0);
+  /* #caf0f8 — light cyan */
+  --background: oklch(0.944 0.040 200);
+  /* #03045e — deep twilight */
+  --foreground: oklch(0.110 0.190 265);
 
-  --card: oklch(0.975 0.005 271);
-  --card-foreground: oklch(0 0 0);
-  --popover: oklch(0.975 0.005 271);
-  --popover-foreground: oklch(0 0 0);
+  --card: oklch(0.960 0.030 200);
+  --card-foreground: oklch(0.110 0.190 265);
+  --popover: oklch(0.960 0.030 200);
+  --popover-foreground: oklch(0.110 0.190 265);
 
-  /* #2f4550 — dark slate teal for filled buttons & accents */
-  --primary: oklch(0.31 0.05 220);
-  /* #f4f4f9 — light text on dark buttons */
-  --primary-foreground: oklch(0.963 0.006 271);
+  /* #0077b6 — bright teal blue */
+  --primary: oklch(0.500 0.140 233);
+  /* light text on blue buttons */
+  --primary-foreground: oklch(0.970 0.020 200);
 
-  --secondary: oklch(0.92 0.006 271);
-  --secondary-foreground: oklch(0 0 0);
+  /* #90e0ef — frosted blue */
+  --secondary: oklch(0.870 0.055 205);
+  --secondary-foreground: oklch(0.110 0.190 265);
 
-  --muted: oklch(0.92 0.006 271);
-  /* #586f7c — medium slate for secondary text */
-  --muted-foreground: oklch(0.47 0.05 220);
+  /* #90e0ef — frosted blue for muted surfaces */
+  --muted: oklch(0.870 0.055 205);
+  /* mid-tone between deep twilight and bright blue */
+  --muted-foreground: oklch(0.380 0.120 250);
 
-  /* #2f4550 — same as primary */
-  --accent: oklch(0.31 0.05 220);
-  --accent-foreground: oklch(0.963 0.006 271);
+  /* #0077b6 — same as primary */
+  --accent: oklch(0.500 0.140 233);
+  --accent-foreground: oklch(0.970 0.020 200);
 
   --destructive: oklch(0.577 0.245 27.325);
   --destructive-foreground: oklch(0.98 0 0);
 
-  --border: oklch(0.87 0.010 220);
-  --input: oklch(0.92 0.006 271);
+  --border: oklch(0.840 0.060 205);
+  --input: oklch(0.870 0.055 205);
 
-  /* #b8dbd9 — light cyan teal for focus rings & hover outlines */
-  --ring: oklch(0.86 0.05 194);
+  /* #00b4d8 — turquoise surf for rings & hover */
+  --ring: oklch(0.680 0.130 210);
 
-  --chart-1: oklch(0.646 0.222 41.116);
-  --chart-2: oklch(0.6 0.118 184.704);
-  --chart-3: oklch(0.398 0.07 227.392);
-  --chart-4: oklch(0.828 0.189 84.429);
-  --chart-5: oklch(0.769 0.188 70.08);
+  --chart-1: oklch(0.500 0.140 233);
+  --chart-2: oklch(0.680 0.130 210);
+  --chart-3: oklch(0.870 0.055 205);
+  --chart-4: oklch(0.110 0.190 265);
+  --chart-5: oklch(0.944 0.040 200);
   --radius: 0.625rem;
 
-  --sidebar: oklch(0.92 0.006 271);
-  --sidebar-foreground: oklch(0 0 0);
-  --sidebar-primary: oklch(0.31 0.05 220);
-  --sidebar-primary-foreground: oklch(0.963 0.006 271);
-  --sidebar-accent: oklch(0.92 0.006 271);
-  --sidebar-accent-foreground: oklch(0 0 0);
-  --sidebar-border: oklch(0.87 0.010 220);
-  --sidebar-ring: oklch(0.86 0.05 194);
+  --sidebar: oklch(0.870 0.055 205);
+  --sidebar-foreground: oklch(0.110 0.190 265);
+  --sidebar-primary: oklch(0.500 0.140 233);
+  --sidebar-primary-foreground: oklch(0.970 0.020 200);
+  --sidebar-accent: oklch(0.870 0.055 205);
+  --sidebar-accent-foreground: oklch(0.110 0.190 265);
+  --sidebar-border: oklch(0.840 0.060 205);
+  --sidebar-ring: oklch(0.680 0.130 210);
 }
 
 @theme inline {
